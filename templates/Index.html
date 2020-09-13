@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Data!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    /* img.two {height: 90%; width: 90%;} */
+    hr.new {
+      border-top: 1px solid black;
+    }
+
+    .h3 {
+      font-size: x-large;
+    }
+
+    .h5 {
+      font-size: x-large;
+    }
+
+    #table {
+      float: right;
+    }
+
+    .h6 {
+      font-size: x-large;
+    }
+
+    /* img.hem {height: 90%; width: 90%;} */
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row justify-content-between">
+        <div class="col-md-3">
+          <h1>Latest Mars News</h1>
+          <hr class='new'>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p><b>{{mars.article}}</b></p>
+          <p><small>{{mars.article_p}}</small></p>
+        </div>
+        <div id="table" class="col-md-5">
+          <h5 class="h5">Mars Facts</h5>
+          {{mars.table | safe}}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container-fluid">
+      <!-- <div class="row justify-content-between"> -->
+      <div class="row">
+        <div class="col-md-7">
+          <h3 class="h3">Featured Image</h3>
+          <!-- <img class='two w-100' src="{{ mars.featured_image }}"> -->
+          <img class='col-md-12' src="{{ mars.featured_image }}">
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            {% for entry in mars.hemispheres %}
+            <div class=col-md-6>
+              <h6 class="h6">{{entry.title}}</h6>
+              <img class='hem col-md-12' src="{{entry.img_url}}">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>
